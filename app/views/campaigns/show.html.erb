@@ -1,0 +1,25 @@
+<%= render 'layouts/header' %>
+
+<h1>Campaign Details</h1>
+<p>
+  <strong>User:</strong>
+  <%= @campaign.user.name %>
+</p>
+
+<p>
+  <strong>Campaign Name:</strong>
+  <%= @campaign.cname %>
+</p>
+
+<p>
+  <strong>Campaign Daily Budget:</strong>
+  <%= @campaign.campaigndailybudget %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @campaign.status %>
+</p>
+
+<%= link_to 'Edit', edit_campaign_path(@campaign) %> |
+<%= link_to 'Back', :back %>

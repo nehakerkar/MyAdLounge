@@ -10,6 +10,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+   @campaigns = Campaign.where("user_id = ?", @user.id)
+   @adgroups = Adgroup.where("campaign_id in (?)", @campaigns.ids)
+   @ads = Ad.where("adgroup_id in (?)", @adgroups.ids)
   end
 
   # GET /users/new

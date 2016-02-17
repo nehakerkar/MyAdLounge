@@ -1,25 +1,115 @@
  <%= render 'layouts/header' %>
 
-<p id="notice"><%= notice %></p>
 <% provide(:title, @user.name) %>
-<h1>
-  <%= gravatar_for @user %>
-  <%= @user.name %>
+<h1 id="makecenter">
+ Welcome <%= @user.name %>!
 </h1>
 <!--
 <% flash.each do |message_type, message| %>
   <div class="alert alert-<%= message_type %>"><%= message %></div>
 <% end %>
 -->
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div>
+<div id="makeleft"><%= link_to 'Show all Campaigns', campaigns_path %> | <%= link_to 'Show all Adgroups', adgroups_path %> | <%= link_to 'Show All Ads', ads_path %></div>
+<div id="makeright"><%= link_to 'Create Campaign', new_campaign_path %> | <%= link_to 'Create Adgroup', new_adgroup_path %> | <%= link_to 'Create Ad', new_ad_path %></div>
+</div>
+<br>
+</div>
+<h2>Your AdWords account</h2>
+<table border=1>
+	<tr>
+	<th>Serial Number</th>
+	<th>Campaign</th>
+	<th>Campaign Daily Budget</th>
+	<th>Adgroup</th>
+	<th>Max CPC</th>
+	<th>HeadLine</th>
+	<th>Description Line 1</th>
+	<th>Description Line 2</th>
+	<th>Display URL</th>
+	<th>Final URL</th>
+	<th>Keyword</th>
+	<th>Criterion Type</th>
+	<th>First Page Bid</th>
+	<th>Top of Page Bid</th>
+	<th>Campaign status</th>
+	<th>AdGroup status</th>
+	<th>Status status</th>
+	<th>Manage</th>
+	</tr>
+	<% count=0 %>
+   <% @campaigns.each do |c| %>
+   	<tr>
+   	<% count=count+1 %>
+    <td><%=count %></td>
+	<td><%= link_to c.cname, edit_campaign_path(c) %></td>
+	<td><%=c.campaigndailybudget%></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><%=c.status%></td>
+	<td></td>
+	<td></td>
+	<td><%= link_to 'Edit', edit_campaign_path(c) %><br><%= link_to 'Delete', c, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+   </tr>
+   <% @adgroups.each do |g| %>
+   <% if (g.campaign_id==c.id) %>
+   <tr>
+   	<% count=count+1 %>
+    <td><%=count %></td>
+	<td><%= link_to c.cname, edit_campaign_path(c) %></td>
+	<td></td>
+	<td><%= link_to g.aname, edit_adgroup_path(g) %></td>
+	<td><%=g.maxcpc%></td>
+	<td><%=g.headline%></td>
+	<td><%=g.description1%></td>
+	<td><%=g.description1%></td>
+	<td><%=g.displayurl%></td>
+	<td><%=g.finalurl%></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><%=g.status%></td>
+	<td></td>
+	<td><%= link_to 'Edit', edit_adgroup_path(g) %><br><%= link_to 'Delete', g, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+   </tr>   
+   <% @ads.each do |a| %>
+   <% if (a.adgroup_id==g.id && g.campaign_id==c.id) %>
+   <tr>
+   	<% count=count+1 %>
+    <td><%=count %></td>
+	<td><%= link_to c.cname, edit_campaign_path(c) %></td>
+	<td></td>
+	<td><%= link_to g.aname, edit_adgroup_path(g) %></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><%= link_to a.keyword, edit_ad_path(a) %></td>
+	<td><%=a.criteriontype%></td>
+	<td><%=a.firstpagebid%></td>
+	<td><%=a.topofpagebid%></td>
+	<td></td>
+	<td></td>
+	<td><%=a.status%></td>
+	<td><%= link_to 'Edit', edit_ad_path(a) %><br><%= link_to 'Delete', a, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+   </tr>
+   <% end %>
+   <% end %>
+   <% end %>
+   <% end %>
+   <% end %>
+</table>
+</div>

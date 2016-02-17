@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  cname: MyString
+  campaigndailybudget: 1.5
+  status: MyString
+
+two:
+  user_id: 
+  cname: MyString
+  campaigndailybudget: 1.5
+  status: MyString

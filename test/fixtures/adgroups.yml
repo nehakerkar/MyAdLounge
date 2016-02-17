@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  campaign_id: 
+  aname: MyString
+  maxcpc: 1.5
+  headline: MyString
+  description1: MyText
+  description2: MyText
+  displayurl: MyString
+  finalurl: MyString
+  status: MyString
+
+two:
+  campaign_id: 
+  aname: MyString
+  maxcpc: 1.5
+  headline: MyString
+  description1: MyText
+  description2: MyText
+  displayurl: MyString
+  finalurl: MyString
+  status: MyString

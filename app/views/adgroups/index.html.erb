@@ -1,0 +1,43 @@
+<%= render 'layouts/header' %>
+
+<h1>Your Adgroups</h1>
+
+<table border=1>
+  <thead>
+    <tr>
+      <th>Campaign</th>
+      <th>Adgroup name</th>
+      <th>Max cpc</th>
+      <th>Headline</th>
+      <th>Description Line 1</th>
+      <th>Description Line 2</th>
+      <th>Display url</th>
+      <th>Final url</th>
+      <th>Status</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @adgroups.each do |adgroup| %>
+      <tr>
+        <td><%= adgroup.campaign.cname %></td>
+        <td><%= adgroup.aname %></td>
+        <td><%= adgroup.maxcpc %></td>
+        <td><%= adgroup.headline %></td>
+        <td><%= adgroup.description1 %></td>
+        <td><%= adgroup.description2 %></td>
+        <td><%= adgroup.displayurl %></td>
+        <td><%= adgroup.finalurl %></td>
+        <td><%= adgroup.status %></td>
+        <td><%= link_to 'Show', adgroup %></td>
+        <td><%= link_to 'Edit', edit_adgroup_path(adgroup) %></td>
+        <td><%= link_to 'Destroy', adgroup, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Create Adgroup', new_adgroup_path %>

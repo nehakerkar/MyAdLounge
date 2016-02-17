@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  adgroup_id: 
+  keyword: MyString
+  criteriontype: MyString
+  firstpagebid: 1.5
+  topofpagebid: 1.5
+  status: MyString
+
+two:
+  adgroup_id: 
+  keyword: MyString
+  criteriontype: MyString
+  firstpagebid: 1.5
+  topofpagebid: 1.5
+  status: MyString

@@ -1,0 +1,36 @@
+<%= render 'layouts/header' %>
+
+<h1>Ad details</h1>
+
+<p>
+  <strong>Adgroup:</strong>
+  <%= @ad.adgroup.aname %>
+</p>
+
+<p>
+  <strong>Keyword:</strong>
+  <%= @ad.keyword %>
+</p>
+
+<p>
+  <strong>Criteriontype:</strong>
+  <%= @ad.criteriontype %>
+</p>
+
+<p>
+  <strong>Firstpagebid:</strong>
+  <%= @ad.firstpagebid %>
+</p>
+
+<p>
+  <strong>Topofpagebid:</strong>
+  <%= @ad.topofpagebid %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @ad.status %>
+</p>
+
+<%= link_to 'Edit', edit_ad_path(@ad) %> |
+<%= link_to 'Back', :back %>

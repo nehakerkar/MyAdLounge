@@ -1,3 +1,30 @@
 div#form_div{
  text-align: center;
 }
+
+.alert-danger{
+ color: red;
+}
+
+.alert-notice{
+ color: green;
+}
+
+a {
+  color: blue;
+  &:hover {
+    color: #fff;
+    background-color: #000;
+    }
+}
+
+#makecenter{
+text-align:center
+}
+
+#makeleft{
+ float:left
+}
+#makeright{
+ float:right
+}

@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-
-  resources :users
   root :to => 'sessions#new'
+
+  resources :ads
+  resources :adgroups
+  resources :campaigns
+  resources :users
+
+  get 'sessions/new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'

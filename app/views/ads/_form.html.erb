@@ -1,0 +1,40 @@
+<%= form_for(@ad) do |f| %>
+  <% if @ad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ad.errors.count, "error") %> prohibited this ad from being saved:</h2>
+
+      <ul>
+      <% @ad.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Ad Group' %><br> 
+	<%= select("ad", "adgroup_id", Adgroup.where("campaign_id IN (?)",Campaign.where("user_id = ?", @user.id).ids).collect{ |c| [ c.aname, c.id] }) %>  </div>
+  <div class="field">
+    <%= f.label :keyword %><br>
+    <%= f.text_field :keyword %>
+  </div>
+  <div class="field">
+    <%= f.label :criteriontype %><br>
+    <%= select("ad", "criteriontype", [['Phrase','phrase'],['Broad','broad'],['Exact','exact']]) %>
+  </div>
+  <div class="field">
+    <%= f.label :firstpagebid %><br>
+    <%= f.text_field :firstpagebid %>
+  </div>
+  <div class="field">
+    <%= f.label :topofpagebid %><br>
+    <%= f.text_field :topofpagebid %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= select("ad", "status", [['active','active'],['pause','paused']]) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

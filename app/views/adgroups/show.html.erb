@@ -1,0 +1,51 @@
+<%= render 'layouts/header' %>
+
+<h1>Ad Group Details</h1>
+
+<p>
+  <strong>Campaign:</strong>
+  <%= @adgroup.campaign.cname %>
+</p>
+
+<p>
+  <strong>Ad Group Name:</strong>
+  <%= @adgroup.aname %>
+</p>
+
+<p>
+  <strong>Max Cost Per Click:</strong>
+  <%= @adgroup.maxcpc %>
+</p>
+
+<p>
+  <strong>Headline:</strong>
+  <%= @adgroup.headline %>
+</p>
+
+<p>
+  <strong>Description Line 1:</strong>
+  <%= @adgroup.description1 %>
+</p>
+
+<p>
+  <strong>Description Line 2:</strong>
+  <%= @adgroup.description2 %>
+</p>
+
+<p>
+  <strong>Display URL:</strong>
+  <%= @adgroup.displayurl %>
+</p>
+
+<p>
+  <strong>Final URL:</strong>
+  <%= @adgroup.finalurl %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @adgroup.status %>
+</p>
+
+<%= link_to 'Edit', edit_adgroup_path(@adgroup) %> |
+<%= link_to 'Back', :back %>

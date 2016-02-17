@@ -1,0 +1,54 @@
+<%= form_for(@adgroup) do |f| %>
+  <% if @adgroup.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@adgroup.errors.count, "error") %> prohibited this adgroup from being saved:</h2>
+
+      <ul>
+      <% @adgroup.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Campaign' %><br>
+    <%= select("adgroup", "campaign_id", Campaign.where("user_id=?",@user.id).collect{ |c| [ c.cname, c.id] }) %>
+  </div>
+  
+  <div class="field">
+    <%= f.label 'Adgroup Name' %><br>
+    <%= f.text_field :aname %>
+  </div>
+  <div class="field">
+    <%= f.label 'Max Cost Per Click' %><br>
+    <%= f.text_field :maxcpc %>
+  </div>
+  <div class="field">
+    <%= f.label 'Headline' %><br>
+    <%= f.text_field :headline %>
+  </div>
+  <div class="field">
+    <%= f.label 'Description Line 1' %><br>
+    <%= f.text_area :description1 %>
+  </div>
+  <div class="field">
+    <%= f.label 'Description Line 2' %><br>
+    <%= f.text_area :description2 %>
+  </div>
+  <div class="field">
+    <%= f.label 'Display URL' %><br>
+    <%= f.text_field :displayurl %>
+  </div>
+  <div class="field">
+    <%= f.label 'Final URL' %><br>
+    <%= f.text_field :finalurl %>
+  </div>
+  <div class="field">
+    <%= f.label 'Status' %><br>
+     <%= select("adgroup", "status", [['active','active'],['pause','paused']]) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
