@@ -4,6 +4,8 @@
  <%= link_to 'Upload tsv file', edit_user_path(@user) %> |
 <!-- <p id="notice"><%= notice %></p> -->
 <br><br>
+<div id="makecenter">
 <% flash.each do |message_type, message| %>
   <div class="alert alert-<%= message_type %>"><%= message %></div>
 <% end %>
+</div>

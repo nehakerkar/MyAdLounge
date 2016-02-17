@@ -14,7 +14,14 @@
 <div id="makeright"><%= link_to 'Create Campaign', new_campaign_path %> | <%= link_to 'Create Adgroup', new_adgroup_path %> | <%= link_to 'Create Ad', new_ad_path %></div>
 </div>
 <br>
+
+<div>
+<% if(@campaigns.size==0) %>
+<div id="makecenter">
+<h2> No Campaigns in your Account!</h2>
+<%= link_to 'Create Campaign', new_campaign_path %>
 </div>
+<% else %>
 <h2>Your AdWords account</h2>
 <table border=1>
 	<tr>
@@ -112,4 +119,5 @@
    <% end %>
    <% end %>
 </table>
+<%end%>
 </div>
