@@ -19,10 +19,10 @@
 <% if(@campaigns.size==0) %>
 <div id="makecenter">
 <h2> No Campaigns in your Account!</h2>
-<%= link_to 'Create Campaign', new_campaign_path %>
 </div>
 <% else %>
-<h2>Your AdWords account</h2>
+<h2>Your AdWords account</h2><br>
+
 <table border=1 id="accountStructureTable">
 <thead>
 	<tr>
@@ -125,5 +125,11 @@
 </table>
 <%end%>
 <a id="lnkExport" href="" onclick="exportTableToCSV('#accountStructureTable')"> Export to csv </a> | 
-<a id="lnkExport" href="" onclick="exportTableToTSV('#accountStructureTable')"> Export to tsv </a>
+<a id="lnkExport" href="" onclick="exportTableToTSV('#accountStructureTable')"> Export to tsv </a> |<br>
+<div id="makecenter">
+<%= form_tag({:action => :import}, multipart: true) do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag( "Import" ) %>
+<% end %>
+</div>
 </div>

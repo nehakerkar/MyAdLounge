@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :import]
 
   # GET /users
   # GET /users.json
@@ -63,6 +63,33 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+  def import
+  parsed_file = CSV.read(params[:file].path, { :col_sep => "\t" })
+   @campaigns = Campaign.where("user_id = ?", @user.id)
+   @adgroups = Adgroup.where("campaign_id in (?)", @campaigns.ids)
+   @ads = Ad.where("adgroup_id in (?)", @adgroups.ids)
+   #@ads.destroy_all
+   #@adgroups.destroy_all
+   #@campaigns.destroy_all
+   
+   #Logic to add new tsv here. --> Incomplete Code here.
+   parsed_file.each do |line|
+	fields = Hash[headers.zip(line.split("\t"))]
+	prev_cname = ""
+	@prev_campaign = Campaign.new
+	for i in 0..15 do
+     if(fields[i]!="Campaign" && fields[i]!="Campaign Daily Budget" && fields[i]!="Ad Group" && fields[i]!="Max CPC" && fields[i]!="Headline" && fields[i]!="Description Line 1" && fields[i]!="Description Line 2" && fields[i]!="Display URL" &&fields[i]!="Final URL"&& fields[i]!="Keyword" && fields[i]!="Criterion Type" && fields[i]!="First page bid"&&fields[i]!="Top of page bid"&&fields[i]!="Campaign Status"&&fields[i]!="Ad Group Status"&&fields[i]!="Status") 
+	 	if (i==0 && fields[i]!="prev_cname")
+	 	 puts prev_cname
+	 	 prev_cname = fields[i]
+	 	end	
+	 end    
+    end
+   end
+   
+  redirect_to @user, notice: "New TSV imported."
   end
 
   private
