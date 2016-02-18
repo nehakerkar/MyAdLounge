@@ -23,7 +23,8 @@
 </div>
 <% else %>
 <h2>Your AdWords account</h2>
-<table border=1>
+<table border=1 id="accountStructureTable">
+<thead>
 	<tr>
 	<th>Serial Number</th>
 	<th>Campaign</th>
@@ -44,6 +45,8 @@
 	<th>Status status</th>
 	<th>Manage</th>
 	</tr>
+</thead>
+<tbody>
 	<% count=0 %>
    <% @campaigns.each do |c| %>
    	<tr>
@@ -118,6 +121,9 @@
    <% end %>
    <% end %>
    <% end %>
+</tbody>
 </table>
 <%end%>
+<a id="lnkExport" href="" onclick="exportTableToCSV('#accountStructureTable')"> Export to csv </a> | 
+<a id="lnkExport" href="" onclick="exportTableToTSV('#accountStructureTable')"> Export to tsv </a>
 </div>
