@@ -88,7 +88,7 @@
 	<td></td>
 	<td></td>
 	<td></td>
-	<td></td>
+	<td><%=c.status%></td>
 	<td><%=g.status%></td>
 	<td></td>
 	<td><%= link_to 'Edit', edit_adgroup_path(g) %><br><%= link_to 'Delete', g, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -111,8 +111,8 @@
 	<td><%=a.criteriontype%></td>
 	<td><%=a.firstpagebid%></td>
 	<td><%=a.topofpagebid%></td>
-	<td></td>
-	<td></td>
+	<td><%=c.status%></td>
+	<td><%=g.status%></td>
 	<td><%=a.status%></td>
 	<td><%= link_to 'Edit', edit_ad_path(a) %><br><%= link_to 'Delete', a, method: :delete, data: { confirm: 'Are you sure?' } %></td>
    </tr>

@@ -77,7 +77,7 @@ class UsersController < ApplicationController
    
    #Logic to add new tsv here. --> Incomplete Code here.
    parsed_file.each do |line|
-	fields = Hash[headers.zip(line.split("\t"))]
+	fields = Hash[headers.zip(line.split("\t"))][["X-Frame-Options", "SAMEORIGIN"]]
 	prev_cname = ""
 	@prev_campaign = Campaign.new
 	for i in 0..15 do
