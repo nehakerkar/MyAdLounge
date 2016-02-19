@@ -66,6 +66,7 @@ class UsersController < ApplicationController
   end
   
   def import
+   begin
   parsed_file = CSV.read(params[:file].path, { :col_sep => "\t" })
    @campaigns = Campaign.where("user_id = ?", @user.id)
    @adgroups = Adgroup.where("campaign_id in (?)", @campaigns.ids)
@@ -90,6 +91,10 @@ class UsersController < ApplicationController
    end
    
   redirect_to @user, notice: "New TSV imported."
+  rescue 
+   flash[:danger] = "Please choose a tsv file."
+   redirect_to @user
+  end
   end
 
   private
